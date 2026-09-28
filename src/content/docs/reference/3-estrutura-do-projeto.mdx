@@ -1,0 +1,94 @@
+---
+title: Estrutura do projeto
+description: Estrutura do código fonte em pastas e arquivos
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+A pasta _root_ do projeto segue a seguinte estrutura.
+
+<FileTree>
+
+- dist/
+- netlify/functions/
+  - rebuild.mts
+- node_modules/
+- public/
+- src/
+- .gitignore
+- .env
+- astro.config.mjs
+- package.json
+- package-lock.json
+- postcss.config.cjs
+- svelte.config.ts
+- tsconfig.json
+
+</FileTree>
+
+**Pastas**
+- `dist/` é onde são salvos os arquivos gerados pelo processo de _build_.
+- `netlify/functions/` é onde vai o código de [Netlify Functions](https://www.netlify.com/platform/functions/). A única função definida é `rebuild`, utilizada para rodar o deploy a partir da interface admin.
+- `public/` é onde vão _assets_ que não passam por processamento, como o _favicon_ do site, ou ícones em SVG.
+- `src/` é onde vai a maior parte do código-fonte em si.
+
+**Arquivos**
+- `.gitignore` é onde são indicados arquivos e pastas que não devem ter seu histórico salvo pelo Git, e não devem ser publicados no repositório do GitHub. Inclui arquivos gerados automaticamente (como o conteúdo da pasta `dist/`) ou que incluem informações sigilosas (como as variáveis de ambiente em `.env`).
+- `astro.config.mjs` é o arquivo de configuração do framework Astro.
+- `svelte.config.ts` é o arquivo de configuração do framework Svelte.
+- `postcss.config.cjs` é o arquivo do configuração do pré-processador de CSS PostCSS.
+- `tsconfig.json` é o arquivo de configuação do TypeScript.
+- `package.json` é o arquivo com a configuração do projeto em si, incluindo _scripts_ e a lista de dependências.
+- `package-lock.json` é um arquivo gerado e atualizado automaticamente ao instalar dependências, utilizado para registrar as versões instaladas.
+
+## `src/`
+
+A pasta `src/` segue, de forma geral, as recomendações de organização do framework Astro.
+
+<FileTree>
+
+- src
+  - actions/
+    - index.ts
+  - assets/
+  - components/
+    - admin/
+    - svelte/
+  - layouts/
+  - lib/
+    - apiUtils/
+      - image.ts
+      - practice.ts
+      - project.ts
+      - supplier.ts
+      - tags.ts
+    - backend.ts
+    - database.types.ts
+    - supabase.ts
+    - types.ts
+  - middleware/
+    - index.ts
+  - pages/
+  - styles/
+  - state.svelte.ts
+  - utils.ts
+
+</FileTree>
+
+- `src/actions/index.ts` inclui as definições de [Astro Actions](https://docs.astro.build/en/guides/actions/) utilizadas na interface admin para a submissão de formulários.
+- `assets/` é onde ficam _assets_ que passam por processamento, como imagens em PNG utilizadas em banners, que passam pelo processo de otimização de imagens disponibilizado pelo Astro.
+- `components/` é onde ficam componentes de interface reutilizáveis.
+  - `components/admin/` agrupa componentes utilizados apenas na interface admin.
+  - `components/svelte/` agrupa componentes interativos criados com Svelte, a serem inseridos em páginas com uso da arquitetura de _islands_ do Astro.
+- `layouts/` é onde ficam os templates de layout de página.
+- `lib/` é onde fica o código que lida diretamente com o backend.
+  - `lib/apiUtils/` é onde ficam as funções e utilidades que lidam com as tabelas do banco de dados.
+  - `lib/backend.ts` importa as funções e utilidades de `apiUtils` e as compõe juntas para definir a API de dados.
+  - `lib/supabase.ts` é onde a conexão com o backend é feita.
+  - `lib/database.types.ts` é o arquivo gerado automaticamente pelo comando `npm run types`, que define tipos de acordo com o estado atual do banco de dados.
+  - `lib/types.ts` importa os tipos de `database.types.ts` e define outros tipos adicionais, então exporta todos os tipos de forma centralizada.
+- `middleware/index.ts` é onde _middleware_ utilizado pelo Astro é definido - ou seja, código que deve rodar antes de carregar qualquer página. Aqui está definido o código que verifica se o usuário está autenticado antes de carregar páginas da interface admin.
+- `pages` é onde são definidas as rotas do site, que inclui as páginas geradas de forma estática no momento do `build`, páginas dinâmicas renderizadas no servidor, e rotas de API.
+- `state.svelte.ts` é onde o estado da aplicação compartilhado por diversos componentes Svelte é armazenado.
+
+### `src/pages/`
