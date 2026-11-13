@@ -1,0 +1,256 @@
+---
+title: Design System
+description: Descreve os design tokens definidos para plataforma Redeprol
+---
+
+import Hexcode from "@src/components/Hexcode.astro";
+
+Seguem as definições de tokens utilizados pelo design system da plataforma Redeprol. Eles são utilizados via _custom properties_ em CSS.
+
+## Tokens primitivos
+
+### Escalas fluídas
+
+Há utilização das escalas fluídas geradas com utilização da ferramenta [Utopia](https://utopia.fyi).
+
+Os tokens de `fluid-scale` são utilizados para espaçamento entre elementos, _padding_, margens, etc. Já aqueles de `fluid-type` são utilizados na tipografia.
+
+As escalas foram geradas com a seguinte configuração dentro da ferramenta:
+
+| | Tela mínima | Tela máxima |
+| --- | --- | --- |
+| **Largura de tela** | 360px | 1440px |
+| **Tamanho de fonte** | 16px | 20px |
+| **Escala tipográfica** | 1.125 | 1.125 |
+
+A ferramenta gera valores para os tokens utilizando a função _clamp_, para que os tamanhos se ajustem de forma fluída e gradual a cada tamanho de tela entre os limites estabelecidos.
+
+#### Escala de espaçamento
+
+Nomenclatura segue padrão de "_t-shirt sizing_".
+
+| Token | Valor |
+| --- | --- |
+| `--fluid-space-3xs` | `clamp(0.25rem, 0.2292rem + 0.0926vw, 0.3125rem)` |
+| `--fluid-space-2xs` | `clamp(0.5rem, 0.4583rem + 0.1852vw, 0.625rem)` |
+| `--fluid-space-xs`  | `clamp(0.75rem, 0.6875rem + 0.2778vw, 0.9375rem)` |
+| `--fluid-space-s`   | `clamp(1rem, 0.9167rem + 0.3704vw, 1.25rem)` |
+| `--fluid-space-m`   | `clamp(1.5rem, 1.375rem + 0.5556vw, 1.875rem)` |
+| `--fluid-space-l`   | `clamp(2rem, 1.8333rem + 0.7407vw, 2.5rem)` |
+| `--fluid-space-xl`  | `clamp(3rem, 2.75rem + 1.1111vw, 3.75rem)` |
+| `--fluid-space-2xl` | `clamp(4rem, 3.6667rem + 1.4815vw, 5rem)` |
+| `--fluid-space-3xl` | `clamp(6rem, 5.5rem + 2.2222vw, 7.5rem)` |
+| `--fluid-space-4xl` | `clamp(8rem, 7.3333rem + 2.963vw, 10rem)` |
+| `--fluid-space-5xl` | `clamp(10rem, 9.1667rem + 3.7037vw, 12.5rem)` |
+|  `--fluid-space-3xs-2xs` | `clamp(0.25rem, 0.125rem + 0.5556vw, 0.625rem)` |
+|  `--fluid-space-2xs-xs` | `clamp(0.5rem, 0.3542rem + 0.6481vw, 0.9375rem)` |
+|  `--fluid-space-xs-s` | `clamp(0.75rem, 0.5833rem + 0.7407vw, 1.25rem)` |
+|  `--fluid-space-s-m` | `clamp(1rem, 0.7083rem + 1.2963vw, 1.875rem)` |
+|  `--fluid-space-m-l` | `clamp(1.5rem, 1.1667rem + 1.4815vw, 2.5rem)` |
+|  `--fluid-space-l-xl` | `clamp(2rem, 1.4167rem + 2.5926vw, 3.75rem)` |
+|  `--fluid-space-xl-2xl` | `clamp(3rem, 2.3333rem + 2.963vw, 5rem)` |
+|  `--fluid-space-2xl-3xl` | `clamp(4rem, 2.8333rem + 5.1852vw, 7.5rem)` |
+|  `--fluid-space-3xl-4xl` | `clamp(6rem, 4.6667rem + 5.9259vw, 10rem)` |
+|  `--fluid-space-4xl-5xl` | `clamp(8rem, 6.5rem + 6.6667vw, 12.5rem)` |
+
+
+#### Escala tipográfica
+
+Nomenclatura inclui os valores aproximados do tamanho máximo e mínimo em pixels.
+
+| Token | Valor |
+| --- | --- |
+| `--fluid-type-16-12` | `clamp(0.7901rem, 0.7243rem + 0.2926vw, 0.9877rem)` |
+| `--fluid-type-18-14` | `clamp(0.8889rem, 0.8148rem + 0.3292vw, 1.1111rem)` |
+| `--fluid-type-20-16` | `clamp(1rem, 0.9167rem + 0.3704vw, 1.25rem)` |
+| `--fluid-type-22-18` | `clamp(1.125rem, 1.0313rem + 0.4167vw, 1.4063rem)` |
+| `--fluid-type-24-20` | `clamp(1.2656rem, 1.1602rem + 0.4688vw, 1.582rem)` |
+| `--fluid-type-30-22` | `clamp(1.4238rem, 1.3052rem + 0.5273vw, 1.7798rem)` |
+| `--fluid-type-32-24` | `clamp(1.6018rem, 1.4683rem + 0.5933vw, 2.0023rem)` |
+
+### Paletas de cores
+
+Há três paletas primitivas: `brand` (cor primária a identidade visual), `complement` (cor secundária da identidade visual), e `neutral` (tons de cinza).
+
+#### Paleta de cor primária
+
+| Token | Valor |
+| --- | --- |
+| `--color-brand-50`  |  <Hexcode hex="#f9fbfb" /> |
+| `--color-brand-100` |  <Hexcode hex="#e6f4f6" /> |
+| `--color-brand-200` |  <Hexcode hex="#c8e8ec" /> |
+| `--color-brand-300` |  <Hexcode hex="#9ed7de" /> |
+| `--color-brand-400` |  <Hexcode hex="#0098ac" /> |
+| `--color-brand-500` |  <Hexcode hex="#007f91" /> |
+| `--color-brand-600` |  <Hexcode hex="#006d7d" /> |
+| `--color-brand-700` |  <Hexcode hex="#056374" /> |
+| `--color-brand-800` |  <Hexcode hex="#004251" /> |
+| `--color-brand-900` |  <Hexcode hex="#003540" /> |
+| `--color-brand-950` |  <Hexcode hex="#001e25" /> |
+
+#### Paleta de cor secundária
+
+| Token | Valor |
+| --- | --- |
+| `--color-complement-50`  | <Hexcode hex="#fcf8fa" /> |
+| `--color-complement-100` | <Hexcode hex="#f7eef3" /> |
+| `--color-complement-200` | <Hexcode hex="#eedce7" /> |
+| `--color-complement-300` | <Hexcode hex="#deb8cf" /> |
+| `--color-complement-400` | <Hexcode hex="#c98aad" /> |
+| `--color-complement-500` | <Hexcode hex="#904c77" /> |
+| `--color-complement-600` | <Hexcode hex="#7a3f65" /> |
+| `--color-complement-700` | <Hexcode hex="#653451" /> |
+| `--color-complement-800` | <Hexcode hex="#51293f" /> |
+| `--color-complement-900` | <Hexcode hex="#3d1e2e" /> |
+| `--color-complement-950` | <Hexcode hex="#26111c" /> |
+
+#### Paleta de cor neutra
+
+| Token | Valor |
+| --- | --- |
+| `--color-neutral-00`  |  <Hexcode hex="#ffffff" /> |
+| `--color-neutral-50`  |  <Hexcode hex="#f3f7f8" /> |
+| `--color-neutral-100` |  <Hexcode hex="#e1e9ec" /> |
+| `--color-neutral-200` |  <Hexcode hex="#c6d6db" /> |
+| `--color-neutral-300` |  <Hexcode hex="#9eb9c2" /> |
+| `--color-neutral-400` |  <Hexcode hex="#6f93a1" /> |
+| `--color-neutral-500` |  <Hexcode hex="#537787" /> |
+| `--color-neutral-600` |  <Hexcode hex="#486472" /> |
+| `--color-neutral-700` |  <Hexcode hex="#37454e" /> |
+| `--color-neutral-800` |  <Hexcode hex="#263038" /> |
+| `--color-neutral-900` |  <Hexcode hex="#171d22" /> |
+| `--color-neutral-950` |  <Hexcode hex="#0c0d0e" /> |
+
+## Tokens semânticos
+
+### Cores
+
+| Token | Valor | Cor computada |
+| --- | --- | --- |
+| `--color-bg` |  `var(--color-neutral-00)`| <Hexcode hex="#ffffff" />
+| `--color-bg-subtle` |  `var(--color-brand-50)` | <Hexcode hex="#f9fbfb" />
+| `--color-bg-gradient` |  `var(--color-neutral-100)` | <Hexcode hex="#e1e9ec" />
+| `--color-bg-hero` |  `var(--color-brand-700)` | <Hexcode hex="#056374" />
+| `--color-bg-hero-gradient` |  `var(--color-brand-800)` | <Hexcode hex="#004251" />
+| `--color-text-link` |  `var(--color-brand-500)` | <Hexcode hex="#007f91" />
+| `--color-text-body` |  `var(--color-neutral-600)` | <Hexcode hex="#486472" />
+| `--color-text-small` |  `var(--color-neutral-700)` | <Hexcode hex="#0c0d0e" />
+| `--color-text-on-accent` |  `var(--color-neutral-00)` | <Hexcode hex="#ffffff" />
+| `--color-button-bg` |  `var(--color-brand-700)` | <Hexcode hex="#056374" />
+| `--color-button-bg-hover` |  `var(--color-brand-500)` | <Hexcode hex="#007f91" />
+| `--color-button-bg-pressed` |  `var(--color-brand-800)` | <Hexcode hex="#004251" />
+| `--color-icon-stroke` |  `var(--color-brand-500)` | <Hexcode hex="#007f91" />
+| `--color-icon-stroke-hover` |  `var(--color-neutral-200)` | <Hexcode hex="#c6d6db" />
+| `--color-icon-bg` |  `var(--color-neutral-200)` | <Hexcode hex="#c6d6db" />
+| `--color-icon-bg-hover` |  `var(--color-brand-400)` | <Hexcode hex="#0098ac" />
+| `--color-input-border` |  `var(--color-neutral-300)` | <Hexcode hex="#9eb9c2" />
+| `--color-surface-border` |  `var(--color-neutral-200)` | <Hexcode hex="#c6d6db" />
+| `--color-divider` |  `var(--color-neutral-200)` | <Hexcode hex="#c6d6db" />
+| `--color-heading-hero` |  `var(--color-neutral-00)` | <Hexcode hex="#ffffff" />
+| `--color-heading-primary` |  `var(--color-brand-800)` | <Hexcode hex="#004251" />
+| `--color-heading-secondary` |  `var(--color-complement-500)` | <Hexcode hex="#904c77" />
+
+### Layout
+
+| Token | Valor |
+| --- | --- |
+| `--space-3xs` | `var(--fluid-space-3xs)` |
+| `--space-2xs` | `var(--fluid-space-2xs)` |
+| `--space-xs:` | `var(--fluid-space-xs)` |
+| `--space-s:`  | `var(--fluid-space-s)` |
+| `--space-m:`  | `var(--fluid-space-m)` |
+| `--space-l:`  | `var(--fluid-space-l)` |
+| `--space-xl:` | `var(--fluid-space-xl)` |
+| `--space-2xl` | `var(--fluid-space-2xl)` |
+| `--space-3xl` | `var(--fluid-space-3xl)` |
+| `--space-m-l` | `var(--fluid-space-m-l)` |
+| `--grid-max-width` | `1440px` |
+| `--grid-gutter` | `var(--space-xs)` |
+| `--layout-min-margin` | `var(--space-s)` |
+| `--stack-gap` | `var(--space-m)` |
+| `--section-padding` | `var(--space-xl)` |
+| `--corner-radius-s` | `0.5rem` |
+| `--corner-radius-m` | `0.75rem` |
+| `--corner-radius-l` | `1rem` |
+
+### Tipografia
+
+| Token | Valor |
+| --- | --- |
+| `--font-family` | `Inter, system-ui, sans-serif` |
+| `--font-size-3xl` | `var(--fluid-type-32-24)` |
+| `--font-size-2xl` | `var(--fluid-type-30-22)` |
+| `--font-size-xl` | `var(--fluid-type-24-20)` |
+| `--font-size-l` | `var(--fluid-type-24-20)` |
+| `--font-size-m` | `var(--fluid-type-22-18)` |
+| `--font-size-s` | `var(--fluid-type-20-16)` |
+| `--font-size-xs` | `var(--fluid-type-18-14)` |
+| `--font-size-2xs` | `var(--fluid-type-16-12)` |
+| `--font-weight-bold` | `700` |
+| `--font-weight-semibold` | `600` |
+| `--font-weight-medium` | `500` |
+| `--font-weight-regular` | `400` |
+| `--line-height-base` | `160%` |
+| `--line-height-large-text` | `140%` |
+| `--line-height-small-text` | `180%` |
+
+
+## Componentes de tipografia
+
+**Cabeçalho _hero_**
+
+```css
+.heading-hero {
+  /*Texto da seção hero*/
+  color: var(--color-heading-hero);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-large-text);
+}
+```
+
+**Cabeçalho 1**
+
+```css
+.heading-1 {
+  /*Títulos de páginas*/
+  color: var(--color-heading-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-large-text);
+}
+```
+
+**Cabeçalho 2**
+```css
+.heading-2 {
+  /*Títulos de seções*/
+  color: var(--color-heading-secondary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-large-text);
+}
+```
+
+**Cabeçalho 3**
+
+```css
+.heading-3 {
+  /*Títulos dentro de seções*/
+  color: var(--color-heading-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-base);
+}
+```
+
+**Cabeçalho 4**
+```css
+.heading-4 {
+  /*Subtítulos dentro de seções*/
+  color: var(--color-heading-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+}
+```
